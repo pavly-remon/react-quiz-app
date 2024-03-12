@@ -10,6 +10,8 @@ const Quiz = () => {
   const [userAnswers, setUserAnswers] = useState([]);
   const activeQuestionIndex = userAnswers.length;
   const quizCompleted = activeQuestionIndex === QUESTIONS.length;
+  const question = QUESTIONS[activeQuestionIndex];
+
   const handleSelectAnswer = (answer) => {
     setUserAnswers((prev) => [...prev, answer]);
   };
@@ -22,7 +24,8 @@ const Quiz = () => {
       {!quizCompleted ? (
         <div id="quiz">
           <Question
-            question={QUESTIONS[activeQuestionIndex]}
+            key={question.id}
+            question={question}
             handleSelectAnswer={handleSelectAnswer}
           />
         </div>
